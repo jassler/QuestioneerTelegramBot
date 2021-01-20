@@ -1,0 +1,15 @@
+{
+  "name": "questioneer",
+  "version": "1.0.0",
+  "description": "Telegram bot that asks questions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Felix Fritz",
+  "license": "ISC",
+  "dependencies": {
+    "telegraf": "^4.0.1"
+  }
+}

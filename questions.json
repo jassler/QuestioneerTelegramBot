@@ -1,0 +1,105 @@
+[
+    {
+        "type": "open",
+        "q": "Was muss ein Kryptosystem leisten?",
+        "a": "Es muss damit möglich sein, einen beliebigen Klartext leicht zu verschlüsseln. Auf der anderen Seite muss das Entschlüsseln für Unbefugte sehr schwer (am liebsten unmöglich) sein."
+    },
+    {
+        "type": "open",
+        "q": "Was ist Security-through-obscurity Prinzip?",
+        "a": "Die Sicherheit eines Systems oder eines Verfahrens hängt von der Geheimhaltung dessen Funktionsweise ab."
+    },
+    {
+        "type": "truefalse",
+        "q": "Substitutionschiffren sind gegenüber Known Plaintext-Angriffen sicher.",
+        "a": false,
+        "description": "Mit Plain- und Chiffretexten können bereits Buchstaben des Schlüssels zugeordnet werden"
+    },
+    {
+        "type": "truefalse",
+        "q": "Gegeben sei eine Halbgruppe A=(M, ○) mit neutralem Element e. Dann besitzt jedes x ∈ M höchstens zwei inverse Elemente.",
+        "a": false,
+        "description": "Höchstens ein inverses Element"
+    },
+    {
+        "type": "truefalse",
+        "q": "2 ≡ 20 mod 6",
+        "a": true,
+        "description": "14 = 2 (!) + 3 * 6"
+    },
+    {
+        "type": "truefalse",
+        "q": "x ≡ 1 mod n genau dann, wenn n | x + 1",
+        "a": false,
+        "description": "Nur dann, wenn n | x - 1"
+    },
+    {
+        "type": "truefalse",
+        "q": "ℤ13 ist eine abelsche Gruppe",
+        "a": true,
+        "description": "13 ist eine Primzahl, somit hat jedes Element außer 0 ein multiplikativ Inverses"
+    },
+    {
+        "type": "truefalse",
+        "q": "Für jedes n ∈ ℕ, n > 2, gilt φ(n) ≥ 2",
+        "a": true,
+        "description": "1 und n-1 sind immer in ℤn* enthalten"
+    },
+    {
+        "type": "multiplechoice",
+        "q": "Welche Elemente sind in ℤ6*?",
+        "a": [
+            "0", "✓1", "2", "3", "4", "✓5", "6"
+        ]
+    },
+    {
+        "type": "multiplechoice",
+        "q": "Welche Kryptosysteme sind gegenüber Known Ciphertext Angriffen sicher? (wir gehen hier von einem mittel-langem Wikipediaartikel aus",
+        "a": [
+            "Substitutionschiffre", "Caesar Chiffre", "✓Vigenère", "✓DES", "✓AES"
+        ]
+    },
+    {
+        "type": "multiplechoice",
+        "q": "Welche Feistel-Netze sind CPA sicher?",
+        "a": [
+            "Feistel-Netz mit 2 Runden",
+            "✓Feistel-Netz mit 3 Runden",
+            "✓Feistel-Netz mit 4 Runden"
+        ]
+    },
+    {
+        "type": "multiplechoice",
+        "q": "Welche Feistel-Netze sind CCA sicher?",
+        "a": [
+            "Feistel-Netz mit 2 Runden",
+            "Feistel-Netz mit 3 Runden",
+            "✓Feistel-Netz mit 4 Runden"
+        ]
+    },
+    {
+        "type": "image",
+        "q": "Zeichne ein Feistel-Netz mit 2 Runden",
+        "a": "AgACAgQAAxkBAAIQ2mAIJwowklJOrcI0LyD-aprgLaaBAAJjtDEbm7VJUA6w_fCeJN-8TRx_J10AAwEAAwIAA3gAAx1LBAABHgQ"
+    },
+    {
+        "type": "reply",
+        "q": "1 - x ≡ 5 mod 6, x ist ein Primärrepräsentant. Was muss für x eingesetzt werden?",
+        "a": "2"
+    },
+    {
+        "type": "reply",
+        "q": "Was ist das multiplikativ Inverse von 5 in ℤ6?",
+        "a": "5"
+    },
+    {
+        "type": "reply",
+        "q": "Was ist das multiplikativ Inverse von 5 in ℤ6?",
+        "a": "5"
+    },
+    {
+        "type": "reply",
+        "q": "Was ist 14^12 mod 11?",
+        "a": "1"
+    }
+]
