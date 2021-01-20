@@ -7,7 +7,7 @@ const PLAYER_FILE = 'playerstatus.json'
 const players = JSON.parse(fs.readFileSync(PLAYER_FILE))
 const questions = JSON.parse(fs.readFileSync(QUESTION_FILE))
 
-const token = '960820032:AAFAbQkou-IfkrBimKMr0iw8TefJX2A161E'
+const token = process.env.BOT_TOKEN
 const bot = new Telegraf(token)
 
 
