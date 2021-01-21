@@ -4,35 +4,96 @@ const fs = require('fs')
 const QUESTION_FILE = 'questions.json'
 const PLAYER_FILE = 'playerstatus.json'
 
+/**
+ * @type {{chatid: {
+ *    points: number,
+ *    total: number,
+ *    history: [number],
+ *    q: {
+ *      type: ('open'|'image'|'truefalse'|'multiplechoice'|'reply'),
+ *      q: string,
+ *      a: (string|[string]),
+ *      description: (string|undefined)
+ *    }
+ * }}}
+ */
 const players = JSON.parse(fs.readFileSync(PLAYER_FILE))
+
+/**
+ * @type {[{
+ *    type: ('open'|'image'|'truefalse'|'multiplechoice'|'reply'),
+ *    q: string,
+ *    a: (string|[string]),
+ *    description: (string|undefined)}
+ * ]}
+ */
 const questions = JSON.parse(fs.readFileSync(QUESTION_FILE))
 
 const token = process.env.BOT_TOKEN
 const bot = new Telegraf(token)
 
+/**
+ * Pick a new question, ignore questions that have already come up in the past,
+ * New question index is pushed to history!
+ * 
+ * @param {[number]} history 
+ */
+function randomQuestion(history) {
+  var newQuestionIndex = 0
+  var tries = 0
+  do {
+    newQuestionIndex = Math.floor(Math.random() * questions.length)
+  } while(history.indexOf(newQuestionIndex) >= 0 && ++tries < 20)
 
-function randomQuestion() {
-  return questions[Math.floor(Math.random() * questions.length)]
+  history.push(newQuestionIndex)
+  if(history.length > 10)
+    history.shift()
+
+  return questions[newQuestionIndex]
 }
 
+/**
+ * Data persistence, save player in cache and json file
+ * 
+ * @param {number} chatId 
+ * @param {Object} p (see above for values)
+ */
 function updatePlayer(chatId, p) {
   players[chatId] = p
   fs.writeFileSync(PLAYER_FILE, JSON.stringify(players))
 }
 
+/**
+ * Prepare next question for user
+ * @param {Context} ctx 
+ */
 function nextQuestion(ctx) {
   const chatId = ctx.chat.id
   let p = players[chatId] ?? {
     points: 0,
-    total: 0
+    total: 0,
+    history: []
   }
 
-  p.q = randomQuestion()
+  if(!p.history)
+    p.history = []
+
+  p.q = randomQuestion(p.history)
   
   updatePlayer(chatId, p)
   sendQuestion(ctx, p.q)
 }
 
+/**
+ * 
+ * @param {Context} ctx 
+ * @param {{
+ *      type: ('open'|'image'|'truefalse'|'multiplechoice'|'reply'),
+ *      q: string,
+ *      a: (string|[string]),
+ *      description: (string|undefined)
+ * }} question
+ */
 function sendQuestion(ctx, question) {
   switch(question.type) {
     case 'open':
