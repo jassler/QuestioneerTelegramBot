@@ -94,11 +94,6 @@
     },
     {
         "type": "reply",
-        "q": "Was ist das multiplikativ Inverse von 5 in ℤ6?",
-        "a": "5"
-    },
-    {
-        "type": "reply",
         "q": "Was ist 14^12 mod 11?",
         "a": "1"
     }
